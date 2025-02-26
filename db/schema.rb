@@ -16,8 +16,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_020924) do
 
   create_table "comments", force: :cascade do |t|
     t.text "text_content", default: "", null: false
-    t.integer "user_id", null: false
-    t.integer "project_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_comments_on_project_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_020924) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.text "descritpion", default: "", null: false
+    t.text "description", default: "", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

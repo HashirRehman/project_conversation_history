@@ -1,0 +1,9 @@
+<h1> Projects Index </h1>
+
+<%= link_to "New Project", new_project_path, data: { turbo_frame: "_top" } %>
+
+<ol id="projects">
+  <%= turbo_stream_from "projects" %>
+
+  <%= render @projects %>
+</ol>
