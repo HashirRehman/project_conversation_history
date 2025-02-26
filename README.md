@@ -1,24 +1,29 @@
-# README
+# Project Conversation History
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 1. Ensure to have necessary dependencies
 
-Things you may want to cover:
+You must have docker and docker compose installed on your machine
 
-* Ruby version
+Then you can execute the following commands
 
-* System dependencies
+```
+docker compose up --build
+```
 
-* Configuration
+## 2. Execute the Application
 
-* Database creation
+Go to localhost:3000
 
-* Database initialization
+Press Login and then enter the credentials
 
-* How to run the test suite
+```
+email: test@gmail.com
+password: password
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## 3. Execute the Specs
 
-* Deployment instructions
-
-* ...
+In order to run tests execute the following commands
+```
+rspec ./spec
+```
