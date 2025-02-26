@@ -20,12 +20,13 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-     
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+    <%= render 'shared/nav' %>
+    <%= render 'shared/notice'%>
+    <%= render 'shared/alert'%>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-[#5675db]">
+      <%= yield %>
   </body>
 </html>

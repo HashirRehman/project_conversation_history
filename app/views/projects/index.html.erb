@@ -1,9 +1,13 @@
-<h1> Projects Index </h1>
+<div class="container mx-auto p-6">
+  <h1 class="text-3xl font-bold text-[#343088] mb-6">Projects Index</h1>
 
-<%= link_to "New Project", new_project_path, data: { turbo_frame: "_top" } %>
+  <div class="mb-4">
+    <%= link_to "New Project", new_project_path, data: { turbo_frame: "_top" }, 
+          class: "bg-[#343088] text-white px-4 py-2 rounded-lg hover:bg-[#2b2766] transition duration-200" %>
+  </div>
 
-<ol id="projects">
-  <%= turbo_stream_from "projects" %>
-
-  <%= render @projects %>
-</ol>
+  <ol id="projects" class="bg-white shadow-md rounded-lg p-4">
+    <%= turbo_stream_from "projects" %>
+    <%= render @projects %>
+  </ol>
+</div>

@@ -1,1 +1,12 @@
-<%= render "form", project: @project %>
+<div class="container mx-auto p-6">
+  <h1 class="text-3xl text-center font-bold text-[#343088] mb-6">Create New Project</h1>
+
+  <div class="bg-white shadow-md rounded-lg p-6 max-w-lg mx-auto">
+    <%= render "form", project: @project %>
+  </div>
+
+  <div class="mt-4 text-center">
+    <%= link_to "Back to Projects", projects_path, 
+          class: "text-[#343088] font-medium hover:underline" %>
+  </div>
+</div>

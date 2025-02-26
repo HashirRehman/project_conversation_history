@@ -1,22 +1,25 @@
-<%= form_with(model: @project, local: true) do |form| %>
-  <%= render "devise/shared/error_messages", resource: @project %>
-  
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title, required: true %>
-  </div>
+<div class="bg-white shadow-md rounded-lg p-6 max-w-lg mx-auto">
+  <%= form_with(model: @project, local: true, class: "space-y-4") do |form| %>
+    <%= render "devise/shared/error_messages", resource: project %>
 
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+    <div>
+      <%= form.label :title, class: "block text-gray-700 font-medium" %>
+      <%= form.text_field :title, required: true, class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#343088]" %>
+    </div>
 
-  <div>
-    <%= form.label :status %>
-    <%= form.select :status, Project.statuses.keys.map { |s| [s.humanize, s] } %>
-  </div>
+    <div>
+      <%= form.label :description, class: "block text-gray-700 font-medium" %>
+      <%= form.text_area :description, class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#343088]" %>
+    </div>
 
-  <div>
-    <%= form.submit "Create Project" %>
-  </div>
-<% end %>
+    <div>
+      <%= form.label :status, class: "block text-gray-700 font-medium" %>
+      <%= form.select :status, Project.statuses.keys.map { |s| [s.humanize, s] }, {}, 
+            class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#343088]" %>
+    </div>
+
+    <div>
+      <%= form.submit "Create Project", class: "w-full bg-[#343088] text-white py-2 rounded-lg hover:bg-[#2b2766] transition duration-200" %>
+    </div>
+  <% end %>
+</div>

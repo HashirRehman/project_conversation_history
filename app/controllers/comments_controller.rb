@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.new(comment_params)
 
-    if @comment.save
+    if @comment.save(comment_params)
       respond_to do |format|
         format.turbo_stream
       end
