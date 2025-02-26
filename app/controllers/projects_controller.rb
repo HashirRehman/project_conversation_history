@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
+  before_action :authorize_project, only: [ :show, :update ]
   before_action :set_project, only: [ :show, :update ]
 
   def index
+    authorize_project
     @projects = Project.all
   end
 
@@ -17,6 +19,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    authorize_project
     if @project.save
       respond_to do |format|
         format.html { redirect_to projects_path, notice: "Project created!" }
@@ -38,6 +41,10 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+  def authorize_project
+    authorize @project || Project
+  end
 
   def set_project
     @project = Project.find(params[:id])
