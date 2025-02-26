@@ -24,6 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
+
   config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
@@ -290,7 +291,7 @@ Devise.setup do |config|
   #     mount MyEngine, at: '/my_engine'
   #
   # The router that invoked `devise_for`, in the example above, would be:
-  # config.router_name = :my_engine
+  config.router_name = :my_engine
   #
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:

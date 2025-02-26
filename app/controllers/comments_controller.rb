@@ -3,6 +3,7 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
+
     authorize_comment
     if @comment.save!
       respond_to do |format|
@@ -17,7 +18,7 @@ class CommentsController < ApplicationController
 
   private
 
-  def authorize_project
+  def authorize_comment
     authorize @comment || Comment
   end
 

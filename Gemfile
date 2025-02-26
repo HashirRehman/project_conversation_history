@@ -1,5 +1,8 @@
 source "https://rubygems.org"
 
+
+gem "devise", "~> 4.9"
+gem "pundit", "~> 2.4"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
@@ -45,12 +48,15 @@ gem "thruster", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-
+  gem "byebug"
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+  gem "faker"
+  gem "factory_bot_rails"
+  gem "rspec-rails", "~> 7.1"
 end
 
 group :development do
@@ -60,10 +66,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "shoulda-matchers"
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-gem "devise", "~> 4.9"
-
-gem "pundit", "~> 2.4"
