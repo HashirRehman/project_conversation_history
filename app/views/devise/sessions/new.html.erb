@@ -1,31 +1,34 @@
-<div class="flex items-center justify-center min-h-screen bg-[#343088]">
-  <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-    <h2 class="text-2xl font-bold text-center text-[#343088] mb-6">Log in</h2>
+<div class="flex items-center justify-center min-h-screen bg-[#2c2f33]">
+  <div class="w-full max-w-md bg-[#36393f] p-8 rounded-lg shadow-lg text-white">
+    <h2 class="text-2xl font-bold text-center text-[#7289da] mb-6">Log In</h2>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "space-y-4") do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "space-y-5") do |f| %>
       <div class="field">
-        <%= f.label :email, class: "block text-gray-700 font-medium" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#343088]" %>
+        <%= f.label :email, class: "block text-sm font-medium text-[#b9bbbe]" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",
+              class: "w-full p-3 bg-[#202225] text-white border border-[#202225] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7289da]" %>
       </div>
 
       <div class="field">
-        <%= f.label :password, class: "block text-gray-700 font-medium" %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#343088]" %>
+        <%= f.label :password, class: "block text-sm font-medium text-[#b9bbbe]" %>
+        <%= f.password_field :password, autocomplete: "current-password",
+              class: "w-full p-3 bg-[#202225] text-white border border-[#202225] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7289da]" %>
       </div>
 
       <% if devise_mapping.rememberable? %>
         <div class="field flex items-center">
-          <%= f.check_box :remember_me, class: "mr-2" %>
-          <%= f.label :remember_me, class: "text-gray-700" %>
+          <%= f.check_box :remember_me, class: "mr-2 accent-[#7289da]" %>
+          <%= f.label :remember_me, class: "text-sm text-[#b9bbbe]" %>
         </div>
       <% end %>
 
       <div class="actions">
-        <%= f.submit "Log in", class: "w-full bg-[#343088] text-white py-2 rounded-lg hover:bg-[#2b2766] transition duration-200" %>
+        <%= f.submit "Log In",
+              class: "w-full bg-[#7289da] text-white py-2 rounded-lg hover:bg-[#5b6eae] transition duration-200" %>
       </div>
     <% end %>
 
-    <div class="text-center mt-4">
+    <div class="text-center mt-4 text-sm text-[#b9bbbe]">
       <%= render "devise/shared/links" %>
     </div>
   </div>
