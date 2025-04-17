@@ -1,0 +1,8 @@
+<%= turbo_frame_tag "comments_pagination" do %>
+  <div id="comments" class="space-y-4">
+    <% comments.each do |comment| %>
+      <%= render partial: "comments/comment", locals: { comment: comment, action_type: "existing" } %>
+    <% end %>
+    <%= tailwind_pagy_nav(pagy) %>
+  </div>
+<% end %>

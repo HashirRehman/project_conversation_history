@@ -25,10 +25,9 @@ class Comment < ApplicationRecord
   end
 
   after_destroy_commit do
-    broadcast_remove_to("project_#{project.id}_comments", target: "comment_#{id}")
-    broadcast_append_to(
+    broadcast_replace_to(
       "project_#{project.id}_comments",
-      target: "comments",
+      target: "comment_#{id}",
       partial: "comments/deleted_notice",
       locals: { id: id }
     )

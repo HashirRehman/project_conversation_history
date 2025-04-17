@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
+  include Pagy::Backend
+
   before_action :authorize_project, only: [ :show, :update ]
   before_action :set_project, only: [ :show, :update ]
 
@@ -10,7 +12,12 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @comments = @project.comments.includes(:user)
+    @pagy, @comments = pagy(@project.comments.includes(:user).order(created_at: :asc), items: 10)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream { render partial: "projects/comments_frame", locals: { project: @project, comments: @comments, pagy: @pagy } }
+    end
   end
 
   def new
