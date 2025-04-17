@@ -1,5 +1,45 @@
-<li id="comment_<%= comment.id %>" class="p-3 bg-gray-100 rounded-lg shadow">
-  <strong class="text-[#343088]"><%= comment.user.name %>:</strong>
-  <span class="text-gray-700"><%= comment.text_content %></span>
-  <span class="text-red-500 text-lg">🔴</span>
-</li>
+<div data-controller="accordion comment-edit" class="rounded overflow-hidden shadow bg-[#36393f] mb-3" id="<%= dom_id(comment) %>">
+  <button
+    class="w-full px-4 py-3 bg-[#2f3136] text-purple-300 font-semibold hover:bg-[#4f545c] flex justify-between items-center"
+    data-action="click->accordion#toggle"
+  >
+    <span>
+      <%= comment.user.name %> — 
+      <%= comment_title(action_type) %>
+    <span class="text-[#b9bbbe] ml-2 text-xs">
+      <%= time_ago_in_words(comment.created_at) %> ago
+    </span>
+    </span>
+    <svg data-accordion-target="icon" class="h-4 w-4 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+    </svg>
+  </button>
+
+
+  <div data-accordion-target="body" class="hidden px-4 py-3 text-white bg-[#2f3136] space-y-2">
+    
+    <div data-comment-edit-target="readView">
+      <%= simple_format(comment.text_content) %>
+
+      <div class="mt-2 flex space-x-2">
+        <button data-action="click->comment-edit#toggleEdit" class="text-sm text-[#7289da] hover:underline">Edit</button>
+
+        <%= button_to "Delete", project_comment_path(comment.project, comment), method: :delete,
+              data: { turbo_confirm: "Are you sure?" },
+              class: "text-sm text-red-400 hover:underline bg-transparent border-none p-0" %>
+      </div>
+    </div>
+
+    <div data-comment-edit-target="editView" class="hidden">
+      <%= form_with model: comment, url: project_comment_path(comment.project, comment), method: :patch, data: { turbo: true } do |f| %>
+        <div class="flex flex-col space-y-2">
+          <%= f.text_area :text_content, class: "p-2 rounded bg-[#40444b] text-white", rows: 3 %>
+          <div class="flex space-x-2">
+            <%= f.submit "Update", class: "bg-[#7289da] px-4 py-1 rounded text-white hover:bg-[#5b6eae]" %>
+            <button type="button" data-action="click->comment-edit#cancelEdit" class="text-sm text-red-400 hover:underline">Cancel</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
