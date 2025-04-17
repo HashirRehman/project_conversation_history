@@ -1,45 +1,45 @@
-<div class="min-h-screen flex items-center justify-center bg-[#343088] p-6">
-  <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+<div class="min-h-screen flex items-center justify-center bg-[#2c2f33] p-6">
+  <div class="bg-[#36393f] shadow-xl rounded-lg p-8 w-full max-w-md text-white">
     
-    <h2 class="text-3xl font-bold text-[#343088] text-center mb-6">Sign Up</h2>
+    <h2 class="text-3xl font-bold text-[#7289da] text-center mb-6">Sign Up</h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "space-y-4") do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "space-y-5") do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div>
-        <%= f.label :name, class: "block text-gray-700 font-semibold" %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", 
-              class: "w-full border rounded-lg p-3 focus:ring-[#343088] focus:border-[#343088]" %>
+        <%= f.label :name, class: "block text-sm font-semibold text-[#b9bbbe]" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name",
+              class: "w-full bg-[#202225] border border-[#202225] text-white rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#7289da]" %>
       </div>
 
       <div>
-        <%= f.label :email, class: "block text-gray-700 font-semibold" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", 
-              class: "w-full border rounded-lg p-3 focus:ring-[#343088] focus:border-[#343088]" %>
+        <%= f.label :email, class: "block text-sm font-semibold text-[#b9bbbe]" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",
+              class: "w-full bg-[#202225] border border-[#202225] text-white rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#7289da]" %>
       </div>
 
       <div>
-        <%= f.label :password, class: "block text-gray-700 font-semibold" %>
+        <%= f.label :password, class: "block text-sm font-semibold text-[#b9bbbe]" %>
         <% if @minimum_password_length %>
-          <em class="text-sm text-gray-500">(<%= @minimum_password_length %> characters minimum)</em>
+          <em class="text-xs text-[#72767d] block mb-1">(<%= @minimum_password_length %> characters minimum)</em>
         <% end %>
-        <%= f.password_field :password, autocomplete: "new-password", 
-              class: "w-full border rounded-lg p-3 focus:ring-[#343088] focus:border-[#343088]" %>
+        <%= f.password_field :password, autocomplete: "new-password",
+              class: "w-full bg-[#202225] border border-[#202225] text-white rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#7289da]" %>
       </div>
 
       <div>
-        <%= f.label :password_confirmation, class: "block text-gray-700 font-semibold" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", 
-              class: "w-full border rounded-lg p-3 focus:ring-[#343088] focus:border-[#343088]" %>
+        <%= f.label :password_confirmation, class: "block text-sm font-semibold text-[#b9bbbe]" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",
+              class: "w-full bg-[#202225] border border-[#202225] text-white rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#7289da]" %>
       </div>
 
       <div class="flex justify-center">
-        <%= f.submit "Sign Up", 
-              class: "bg-[#343088] text-white px-6 py-3 rounded-lg hover:bg-[#2b2766] transition" %>
+        <%= f.submit "Sign Up",
+              class: "bg-[#7289da] text-white px-6 py-3 rounded-lg hover:bg-[#5b6eae] transition-colors duration-200" %>
       </div>
     <% end %>
 
-    <div class="mt-4 text-center">
+    <div class="mt-6 text-center text-sm text-[#b9bbbe]">
       <%= render "devise/shared/links" %>
     </div>
 
