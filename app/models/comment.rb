@@ -7,6 +7,30 @@ class Comment < ApplicationRecord
   belongs_to :project
 
   after_create_commit do
-    broadcast_append_to "project_#{project.id}_comments", target: "comments"
+    broadcast_append_to(
+      "project_#{project.id}_comments",
+      target: "comments",
+      partial: "comments/comment",
+      locals: { comment: self, action_type: "added" }
+    )
+  end
+
+  after_update_commit do
+    broadcast_replace_to(
+      "project_#{project.id}_comments",
+      target: "comment_#{id}",
+      partial: "comments/comment",
+      locals: { comment: self, action_type: "updated" }
+    )
+  end
+
+  after_destroy_commit do
+    broadcast_remove_to("project_#{project.id}_comments", target: "comment_#{id}")
+    broadcast_append_to(
+      "project_#{project.id}_comments",
+      target: "comments",
+      partial: "comments/deleted_notice",
+      locals: { id: id }
+    )
   end
 end
