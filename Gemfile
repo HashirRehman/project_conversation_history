@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 
 gem "devise", "~> 4.9"
-gem "pundit", "~> 2.4"
+gem "pundit", "~> 2.5"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
