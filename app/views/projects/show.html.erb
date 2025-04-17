@@ -1,8 +1,8 @@
 <div class="min-h-screen bg-[#2f3136] flex items-center justify-center p-6">
   <div class="bg-[#36393f] shadow-lg rounded-lg p-8 max-w-3xl w-full">
-    
+
     <h1 class="text-3xl font-bold text-[#7289da]"><%= @project.title %></h1>
-    
+
     <p class="mt-4 text-lg text-[#b9bbbe]">
       <strong>Description:</strong> <%= @project.description %>
     </p>
@@ -26,11 +26,15 @@
 
       <%= turbo_stream_from "project_#{@project.id}_comments" %>
 
-      <div id="comments" class="space-y-4">
-        <% @comments.each do |comment| %>
-          <%= render partial: "comments/comment", locals: { comment: comment, action_type: "existing" } %>
-        <% end %>
-      </div>
+      <turbo-frame id="comments_pagination">
+        <div id="comments" class="space-y-4">
+          <%= render partial: "comments/comment", collection: @comments, as: :comment, locals: { action_type: "existing" } %>
+        </div>
+
+        <div class="pagination mt-4 text-center">
+          <%= tailwind_pagy_nav(@pagy) %>
+        </div>
+      </turbo-frame>
 
       <%= form_with model: Comment.new, url: project_comments_path(@project), data: { turbo: true }, class: "mt-6 space-y-3" do |f| %>
         <%= f.hidden_field :user_id, value: current_user.id %>
